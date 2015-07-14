@@ -1,0 +1,8 @@
+LOCATION:
+Archives Network 1
+
+UNIT:
+Gigabytes
+
+FILE_NAME:
+AccessionImport
