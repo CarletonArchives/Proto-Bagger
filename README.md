@@ -48,6 +48,7 @@ There are three fields you can modify in the bagger_settings.txt file: LOCATION,
     - the default is Gigabytes
 - FILE_NAME defines what your AccessionImport file will be named.
     - The default is AccessionImport.
+- EXCLUDES defines what files to ignore in the top directory.
 
 ###AccessionImport file: 
 You can define the name of the accession import file in bagger_settings.txt.
