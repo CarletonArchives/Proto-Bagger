@@ -56,6 +56,7 @@ class ProtoBagger:
         self.import_row["Location"] = self.location
         self.import_row["ExtentUnit"] = self.unit
         self.initializeImportFile()
+        self.excludes = []
 
     def initializeSettings(self, settings_file):
         """ Pulls settings for location, unit, and file_name from bagger_settings.txt """
@@ -71,6 +72,8 @@ class ProtoBagger:
                         parse_state = "unit"
                     elif line == "FILE_NAME:":
                         parse_state = "name"
+                    elif line == "EXCLUDES:":
+                        parse_state = "excludes"
                 elif parse_state == "location":
                     if line == "UNIT:":
                         parse_state = "unit"
@@ -78,6 +81,8 @@ class ProtoBagger:
                         parse_state = "name"
                     elif line != "":
                         self.location = line
+                    elif line == "EXCLUDES:":
+                        parse_state = "excludes"
                     else:
                         parse_state = "none"
                 elif parse_state == "unit":
@@ -87,6 +92,8 @@ class ProtoBagger:
                         parse_state = "name"
                     elif line != "":
                         self.unit = line
+                    elif line == "EXCLUDES:":
+                        parse_state = "excludes"
                     else:
                         parse_state = "none"
                 elif parse_state == "name":
@@ -96,6 +103,21 @@ class ProtoBagger:
                         parse_state = "unit"
                     elif line != "":
                         self.name = line
+                    elif line == "EXCLUDES:":
+                        parse_state = "excludes"
+                    else:
+                        parse_state = "none"
+                elif parse_state == "excludes":
+                    if line != "":
+                        self.excludes.append(line)
+                    if line == "LOCATION:":
+                        parse_state = "location"
+                    elif line == "UNIT:":
+                        parse_state = "unit"
+                    elif line != "":
+                        self.name = line
+                    elif line == "FILE_NAME:":
+                        parse_state = "name"
                     else:
                         parse_state = "none"
         #Checks if the unit recieved was a valid option, changes to Gigabytes if not
@@ -118,7 +140,7 @@ class ProtoBagger:
          and writes their information to import file """
         bag_list = os.listdir(self.top_dir)
         for folder in bag_list:
-            if self.name not in folder:
+            if self.name not in folder and folder not in self.excludes:
                 folder_path = os.path.join(self.top_dir, folder)
                 #checks file structure
                 self.process(folder_path)
