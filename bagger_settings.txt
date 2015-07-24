@@ -6,3 +6,13 @@ Gigabytes
 
 FILE_NAME:
 AccessionImport
+
+EXCLUDES:
+Thumbs.db
+.DS_Store
+bagit.txt
+manifest-md5.txt
+tagmanifest-md5.txt
+bag-info.txt
+rename.csv
+renames.csv
