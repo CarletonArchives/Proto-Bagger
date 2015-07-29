@@ -193,6 +193,13 @@ class ProtoBagger:
                     raise
         #checks for items in data that are not the three basic folders
         #if one exists, move it to the originals file
+        item_list = os.listdir(path)
+        for item in item_list:
+            if ("meta" not in item) and ("dips" not in item) and ("originals" not in item) and ("data" not in item):
+                new_path = os.path.join(orig_path, item)
+                item_path = os.path.join(path, item)
+                shutil.move(item_path, new_path)
+        
         data_list = os.listdir(data_path)
         for item in data_list:
             if ("meta" not in item) and ("dips" not in item) and ("originals" not in item):
