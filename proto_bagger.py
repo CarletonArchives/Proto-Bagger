@@ -33,7 +33,7 @@ class ProtoBagger:
         "Donor Contact Info", "Donor Notes", "Physical Description", "Scope Content", \
         "Comments"]
         #Default, can be set in bagger_settings
-        self.location = "Archives Network Drive"
+        self.location = "Archives Network Storage 1"
         #Default, can be set in bagger_settings
         #options are 'Bytes', 'Kilobytes', 'Megabytes', 'Gigabytes', and 'Terabytes'
         self.unit = "Gigabytes"
