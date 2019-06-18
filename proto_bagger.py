@@ -26,7 +26,7 @@ class ProtoBagger:
         self.import_file = None
         self.import_writer = None
         self.import_header = ["Month", "Day", "Year", "Title", "Identifier", \
-        "Inclusive Dates", "Received Extent", "Extent Unit", "Processed Extent", \
+        "Inclusive Dates", "Received Extent", "Extent Unit", "Unprocessed Extent", \
         "Extent Unit", "Material Type", "Processing Priority", "Ex. Comp. Mont", \
         "Ex. Comp. Day", "Ex. Comp. Year", "Record Series", "Content", "Location", \
         "Range", "Section", "Shelf", "Extent", "ExtentUnit", "CreatorName", "Donor", \
